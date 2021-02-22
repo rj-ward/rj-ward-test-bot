@@ -107,7 +107,7 @@ client.on('message', async(msg) => {
             size = parseInt(msg.content.toLowerCase().substring(6));
         }
         result = roll(size);
-        msg.channel.reply('Rolled a d' + size + ': ' + result);
+        msg.reply('Rolled a d' + size + ': ' + result);
     }
 
 
