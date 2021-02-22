@@ -17,7 +17,7 @@ client.login(process.env.DISCORD_TOKEN);
 const roll = (size) => Math.floor(Math.random * size) + 1;
 
 //checks and receives commands
-client.on('message', msg => {
+client.on('message', async(msg) => {
 //ingore messages from bots
     if (msg.author.bot) {
         return
@@ -101,14 +101,14 @@ client.on('message', msg => {
         }
       }
 
-    if(command === 'roll') {
+    /* if(command === 'roll') {
         let size  = 6
         if (Number.isInteger(args) && !'') {
             size = parseInt(msg.content.toLowerCase().substring(6));
         }
         result = roll(size);
         msg.channel.reply('Rolled a d' + size + ': ' + result);
-    }
+    } */
 
 
       
