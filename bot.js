@@ -105,7 +105,8 @@ client.on('message', async(msg) => {
         let size = 6
         if (Number.isInteger(args) && !'') {
             size = parseInt(msg.content.toLowerCase().substring(6));
-        }
+        };
+        console.log(size);
         result = roll(size);
         console.log(result);
         msg.reply('Rolled a d' + size + ': ' + result);
