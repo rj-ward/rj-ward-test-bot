@@ -101,14 +101,14 @@ client.on('message', async(msg) => {
         }
       }
 
-    /* if(command === 'roll') {
+    if(command === 'roll') {
         let size  = 6
         if (Number.isInteger(args) && !'') {
             size = parseInt(msg.content.toLowerCase().substring(6));
         }
         result = roll(size);
         msg.channel.reply('Rolled a d' + size + ': ' + result);
-    } */
+    }
 
 
       
