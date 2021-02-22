@@ -108,7 +108,7 @@ client.on('message', async(msg) => {
         let size = 6
         console.log(Number.isInteger(Number(args)));
         console.log(Number(args) === Number(args));
-        if (Number.isInteger(Number(args)) && !'') {
+        if (Number.isInteger(Number(args)) && !'' && ![]) {
             size = parseInt(msg.content.toLowerCase().substring(6));
         };
         result = roll(size);
