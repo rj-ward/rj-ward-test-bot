@@ -15,7 +15,8 @@ client.on('ready', () => {
 client.login(process.env.DISCORD_TOKEN);
 
 function isValidCommand(message, cmdName) {
-    return message.content.toLowerCase.startsWith((PREFIX + cmdName));
+    let text = toString(message.content)
+    return text.toLowerCase.startsWith((PREFIX + cmdName));
 }
 
 const roll = (size) => Math.floor(Math.random * size) + 1
