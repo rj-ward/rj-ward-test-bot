@@ -14,12 +14,6 @@ client.on('ready', () => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-function isValidCommand(message, cmdName) {
-    let start = PREFIX + cmdName
-    let text = toString(message.content);
-    return text.toLowerCase.startsWith(start);
-};
-
 const roll = (size) => Math.floor(Math.random * size) + 1;
 
 //checks and receives commands
@@ -33,21 +27,7 @@ client.on('message', async (msg) => {
         console.log('no prefix')
         return
     }
-
-    if (isValidCommand(msg, 'roll')) {
-        let args = msg.content.toLowerCase().substring(6)
-        let size  = 6
-        if (Number.isInteger(args) && !'') {
-            size = parseInt(msg.content.toLowerCase().substring(6));
-        }
-        result = roll(size);
-        msg.channel.reply('Rolled a d' + size + ': ' + result);
-    }
-
-    else if (isValidCommand(msg, 'add')) {
-        let args = msg.content.toLowerCase().substring(5);
-
-    }
+    
     //removes prefix, trims extra whitespace, returns array of words from message
     const args = msg.content.slice(PREFIX.length).trim().split(' ')
 
@@ -98,7 +78,7 @@ client.on('message', async (msg) => {
         `)
       }
 
-      if(command === 'kick') {
+    if(command === 'kick') {
         //verify that user has moderation role
         if(!msg.member.roles.cache.has('812421021830348810')) {
           msg.reply('you dont have permission to kick users')
@@ -120,10 +100,21 @@ client.on('message', async (msg) => {
           })
         }
       }
+
+    if(command === 'roll') {
+        let size  = 6
+        if (Number.isInteger(args) && !'') {
+            size = parseInt(msg.content.toLowerCase().substring(6));
+        }
+        result = roll(size);
+        msg.channel.reply('Rolled a d' + size + ': ' + result);
+    }
+
+
       
     }
 
-)
+);
 
 //set is outside our event listener to prevent wasted processing re-creating it on every message
 let set = new Set(['badword', 'badword2'])
