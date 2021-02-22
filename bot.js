@@ -14,7 +14,7 @@ client.on('ready', () => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-const roll = (size) => Math.floor(Math.random * parseInt(size)) + 1;
+const roll = (size) => (Math.floor(Math.random * parseInt(size)) + 1);
 
 //checks and receives commands
 client.on('message', async(msg) => {
@@ -107,7 +107,7 @@ client.on('message', async(msg) => {
             size = parseInt(msg.content.toLowerCase().substring(6));
         }
         result = roll(size);
-        console.log(result)
+        console.log(result);
         msg.reply('Rolled a d' + size + ': ' + result);
     }
 
