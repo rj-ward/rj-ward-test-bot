@@ -21,7 +21,7 @@ const roll = (size) => Math.floor(Math.random * size) + 1
 //checks and receives commands
 client.on('message', async (msg) => {
 //ingore messages from bots
-    if (message.author.bot) {
+    if (msg.author.bot) {
         return
     };
 //ignore messages not starting with defined prefix
