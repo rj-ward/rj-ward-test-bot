@@ -107,7 +107,7 @@ client.on('message', async(msg) => {
     if(command === 'roll') {
         let size = 6
         console.log(Number.isInteger(Number(args)));
-        if (Number.isInteger(Number(args)) && !'') {
+        if (Number.isInteger(Number(args)) && !'' && !NaN) {
             size = parseInt(msg.content.toLowerCase().substring(6));
         };
         result = roll(size);
