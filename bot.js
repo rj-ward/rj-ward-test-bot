@@ -17,7 +17,7 @@ client.login(process.env.DISCORD_TOKEN);
 const roll = (size) => Math.floor(Math.random * size) + 1;
 
 //checks and receives commands
-client.on('message', async (msg) => {
+client.on('message', msg => {
 //ingore messages from bots
     if (msg.author.bot) {
         return
