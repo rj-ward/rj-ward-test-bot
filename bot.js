@@ -14,7 +14,7 @@ client.on('ready', () => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-const roll = (size) => (Math.floor(Math.random * parseInt(size)) + 1);
+const roll = (size) => (Math.floor(Math.random * size) + 1);
 
 //checks and receives commands
 client.on('message', async(msg) => {
