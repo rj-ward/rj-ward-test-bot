@@ -16,7 +16,7 @@ client.login(process.env.DISCORD_TOKEN);
 
 const isValidCommand = (message, cmdName) => message.content.toLowerCase.startsWith(PREFIX + cmdName);
 
-const roll = (size = 6) => Math.floor(Math.random * size) + 1
+const roll = (size) => Math.floor(Math.random * size) + 1
 
 //checks and receives commands
 client.on('message', async (msg) => {
@@ -31,8 +31,18 @@ client.on('message', async (msg) => {
     }
 
     if (isValidCommand(msg, 'roll')) {
-        result = roll();
+        let args = msg.content.toLowerCase().substring(6)
+        let size  = 6
+        if (Number.isInteger(args)) {
+            size = parseInt(msg.content.toLowerCase().substring(6));
+        }
+        result = roll(size);
         msg.channel.reply('Rolled a d' + size + ': ' + result);
+    }
+
+    else if (isValidCommand(msg, 'add')) {
+        let args = msg.content.toLowerCase().substring(5);
+
     }
     //removes prefix, trims extra whitespace, returns array of words from message
     const args = msg.content.slice(PREFIX.length).trim().split(' ')
