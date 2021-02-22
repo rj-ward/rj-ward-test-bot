@@ -15,8 +15,8 @@ client.on('ready', () => {
 client.login(process.env.DISCORD_TOKEN);
 
 function roll(size) {
-  //  return (Math.floor(Math.random * size) + 1);
-  return Math.random;
+  return (Math.floor(Math.random() * size) + 1);
+ 
 };
 
 //checks and receives commands
