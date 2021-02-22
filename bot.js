@@ -33,7 +33,7 @@ client.on('message', async (msg) => {
     if (isValidCommand(msg, 'roll')) {
         let args = msg.content.toLowerCase().substring(6)
         let size  = 6
-        if (Number.isInteger(args)) {
+        if (Number.isInteger(args) && !'') {
             size = parseInt(msg.content.toLowerCase().substring(6));
         }
         result = roll(size);
