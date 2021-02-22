@@ -5,23 +5,37 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
-const prefix = '&';
+const PREFIX = '&';
 
+//processes function on bot boot/login
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.login(process.env.DISCORD_TOKEN);
 
+const isValidCommand = (message, cmdName) => message.content.toLowerCase.startsWith(PREFIX + cmdName);
+
+const roll = (size = 6) => Math.floor(Math.random * size) + 1
+
+//checks and receives commands
 client.on('message', async (msg) => {
+//ingore messages from bots
+    if (message.author.bot) {
+        return
+    };
 //ignore messages not starting with defined prefix
-    if(!msg.content.startsWith(prefix)) {
+    if(!msg.content.startsWith(PREFIX)) {
         console.log('no prefix')
         return
     }
 
+    if (isValidCommand(msg, 'roll')) {
+        result = roll();
+        msg.channel.reply('Rolled a d' + size + ': ' + result);
+    }
     //removes prefix, trims extra whitespace, returns array of words from message
-    const args = msg.content.slice(prefix.length).trim().split(' ')
+    const args = msg.content.slice(PREFIX.length).trim().split(' ')
 
     //saves first word from array as command
     const command = args.shift().toLowerCase()
