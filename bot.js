@@ -44,9 +44,9 @@ client.on('message', async(msg) => {
     if(command === 'ego') {
         msg.react("😀")
         msg.reply('wow, what a great post')
-      }
+    }
     
-    if (command === "clear") {
+    if(command === "clear") {
         //default deletes message itself plus previous
         let num = 2;
         
@@ -79,7 +79,7 @@ client.on('message', async(msg) => {
         ${joke.setup}
         ${joke.punchline}
         `)
-      }
+    }
 
     if(command === 'kick') {
         //verify that user has moderation role
@@ -102,7 +102,7 @@ client.on('message', async(msg) => {
             msg.reply(`${user.tag} was kicked from the server`)
           })
         }
-      }
+    }
 
     if(command === 'roll') {
         let size = 6
@@ -114,6 +114,37 @@ client.on('message', async(msg) => {
         msg.reply('Rolled a d' + size + ': ' + result);
     }
 
+    if(command === 'add') {
+        let addRoll = msg.content.toLowerCase.substring(PREFIX.length + 4); //removes command from string
+        let { cache } = msg.guild.roles; //pulls list of roles
+        let role = cache.find(role => role.name.toLowerCase() === addRoll); //checks for role in cache
+        if(role) {
+            if(msg.member.roles.cache.has(role.id)) {
+                msg.reply("You already have this role.");
+                return;
+            }
+            else if(
+                role.permissions.has("ADMINISTRATOR") ||
+                role.permissions.has("KICK_MEMBERS") ||
+                role.permissions.has('BAN_MEMBERS') ||
+                role.permissions.has('MANAGE_GUILD') ||
+                role.permissions.has('MANAGE_CHANNELS')) {
+
+                    msg.reply("You cannot add yourself to this role.");
+                    return;
+            } else {
+                msg.member.roles.add(role)
+                    .then(member => msg.reply("You have been added to this role."))
+                    .catch(err => {
+                        console.log(err);
+                        msg.channel.send("Something went wrong...")
+                    });
+            }
+
+        } else {
+            msg.channel.send('Role not found.');
+        }
+    }
 
       
     }
