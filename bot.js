@@ -115,7 +115,7 @@ client.on('message', async(msg) => {
     }
 
     if(command === 'add') {
-        let addRoll = args.join(' ').toLowerCase;
+        let addRoll = args.join(' ').toLowerCase();
         console.log('addRoll: ' + addRoll);
         let { cache } = msg.guild.roles; //pulls list of roles
         let role = cache.find(role => role.name.toLowerCase() === addRoll); //checks for role in cache
