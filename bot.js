@@ -117,9 +117,9 @@ client.on('message', async(msg) => {
     if(command === 'add') {
         let addRoll = args.join(' ');
         console.log('addRoll: ' + addRoll);
-        // let addRoll = msg.content.toLowerCase.substring(PREFIX.length + 4); //removes command from string
         let { cache } = msg.guild.roles; //pulls list of roles
         let role = cache.find(role => role.name.toLowerCase() === addRoll); //checks for role in cache
+        console.log('role: ' + role)
         if(role) {
             if(msg.member.roles.cache.has(role.id)) {
                 msg.reply("You already have this role.");
