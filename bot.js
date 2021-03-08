@@ -178,7 +178,16 @@ client.on('message', async(msg) => {
             }
         });
     }
-      
+ 
+    if(command === 'embed') {
+        let embedContent = args.join(' ');
+        let embed = new discord.MessageEmbed();
+
+        embed.addField('Message', embedContent);
+        embed.setColor('GOLD');
+        embed.setTitle("New embed mesasge created.");
+        msg.channel.send(embed);
+    }
     }
 
 );
