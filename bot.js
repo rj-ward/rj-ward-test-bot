@@ -184,8 +184,12 @@ client.on('message', async(msg) => {
         let embed = new Discord.MessageEmbed();
 
         embed.addField('Message', embedContent);
+        embed.setDescription('description');
         embed.setColor('GOLD');
         embed.setTitle("New embed mesasge created.");
+        embed.setTimestamp();
+        embed.setImage(msg.author.displayAvatarURL());
+        embed.setAuthor(msg.author.tag, msg.author.displayAvatarURL());
         msg.channel.send(embed);
     }
     }
