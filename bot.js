@@ -181,7 +181,7 @@ client.on('message', async(msg) => {
  
     if(command === 'embed') {
         let embedContent = args.join(' ');
-        let embed = new discord.MessageEmbed();
+        let embed = new Discord.MessageEmbed();
 
         embed.addField('Message', embedContent);
         embed.setColor('GOLD');
