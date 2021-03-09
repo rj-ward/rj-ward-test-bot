@@ -194,7 +194,8 @@ client.on('message', async(msg) => {
     }
     
     if(command === 'say') {
-        let channelId = args.shift().substring(2, -1);
+        let channel = args.shift();
+        let channelId = channel.substring(2, channel.length - 1);
         let announcement = args.join(' ');
         console.log(channelId);
         console.log(announcement);
