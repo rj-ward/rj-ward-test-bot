@@ -194,8 +194,11 @@ client.on('message', async(msg) => {
     }
     
     if(command === 'say') {
+        let channelId = args.shift();
         let announcement = args.join(' ');
-        let destinationChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'support');
+        console.log(channelId);
+        console.log(announcement);
+        let destinationChannel = client.channels.cache.get(channelId);
         if (destinationChannel) {
             destinationChannel.message.send(announcement);
         }
