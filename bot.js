@@ -194,13 +194,13 @@ client.on('message', async(msg) => {
     }
     
     if(command === 'say') {
-        let channelId = args.shift();
+        let channelId = args.shift().substring(2, -1);
         let announcement = args.join(' ');
         console.log(channelId);
         console.log(announcement);
         let destinationChannel = client.channels.cache.get(channelId);
-        console.log(destinationChannel);
-        console.log(destinationChannel === true);
+
+       
         if (destinationChannel) {
             destinationChannel.message.send(announcement);
         }
