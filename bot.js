@@ -194,12 +194,12 @@ client.on('message', async(msg) => {
     }
     
     if(command === 'say') {
-        let channel = args.shift();
-        let channelId = channel.substring(2, channel.length - 1);
+        let chan = args.shift();
+        let channelId = chan.substring(2, chan.length - 1);
         let announcement = args.join(' ');
         console.log(channelId);
         console.log(announcement);
-        let destinationChannel = client.channels.cache.get(channelId);
+        let destinationChannel = client.channels.cache.get(channel, channelId);
         console.log(destinationChannel);
        
         if (destinationChannel) {
