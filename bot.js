@@ -192,8 +192,17 @@ client.on('message', async(msg) => {
         embed.setAuthor(msg.author.tag, msg.author.displayAvatarURL());
         msg.channel.send(embed);
     }
+    
+    if(command === 'say') {
+        let announcement = args.join(' ');
+        let destinationChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'support');
+        if (destinationChannel) {
+            destinationChannel.message.send(announcement);
+        }
+    }
     }
 
+    
 );
 
 //set is outside our event listener to prevent wasted processing re-creating it on every message
