@@ -199,12 +199,12 @@ client.on('message', async(msg) => {
         let announcement = args.join(' ');
         console.log(channelId);
         console.log(announcement);
-        let destinationChannel = client.channels.cache.get(channelId);
+        let destinationChannel = client.channels.cache.find(channel => channel.id === channelId);
         console.log(destinationChannel);
        
-        // if (destinationChannel) {
-        //     destinationChannel.message.send(announcement);
-        // }
+        if (destinationChannel) {
+            destinationChannel.message.send(announcement);
+        }
     }
     }
 
