@@ -202,9 +202,9 @@ client.on('message', async(msg) => {
         let destinationChannel = client.channels.cache.get(channelId);
         console.log(destinationChannel);
        
-        // if (destinationChannel) {
-        //     destinationChannel.message.send(announcement);
-        // }
+        if (destinationChannel) {
+            destinationChannel.message.send(announcement);
+        }
     }
     }
 
