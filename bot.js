@@ -203,7 +203,7 @@ client.on('message', async(msg) => {
         console.log(destinationChannel);
        
         if (destinationChannel) {
-            destinationChannel.message.send(announcement);
+            destinationChannel.send(announcement);
         }
     }
     }
