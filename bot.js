@@ -206,7 +206,17 @@ client.on('message', async(msg) => {
             destinationChannel.send(announcement);
         }
     }
+
+    if(command === 'ban') {
+        let userId = args.shift();
+        let userToBan = client.users.cache.get(userId);
+        console.log(userToBan);
+
+        
     }
+    }
+
+
 
     
 );
