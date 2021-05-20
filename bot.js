@@ -210,9 +210,10 @@ client.on('message', async(msg) => {
     if(command === 'ban') {
         let userId = args.shift();
         let userToBan = client.users.cache.get(userId);
-        console.log(userToBan);
+        console.log("userId " + userId)
+        console.log("userToBan: " + userToBan);
 
-        
+
     }
     }
 
